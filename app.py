@@ -98,7 +98,7 @@ df_bruto["nome_produto"] = df_bruto["fg"].apply(nome_fg)
 df_valido = df_bruto[~df_bruto["status"].isin(STATUS_EXCLUIDOS)] if "status" in df_bruto.columns else df_bruto.copy()
 df_cancelado = df_bruto[df_bruto["status"].isin(STATUS_EXCLUIDOS)] if "status" in df_bruto.columns else pd.DataFrame()
 
-valor_col = "valor_total" if "valor_total" in df_valido.columns else "valor"
+valor_col = "valor_net" if "valor_net" in df_valido.columns else "valor_total" if "valor_total" in df_valido.columns else "valor"
 hoje = df_valido["data"].max().date()
 
 # ── Períodos para MoM e YTD (sempre meses fechados) ───────
@@ -111,8 +111,8 @@ else:
     ult_mes_fim = mes_completo_fim(hoje - relativedelta(months=1))
 
 # Mês anterior ao último mês completo
-mes_ant_ini = mes_completo_ini(ult_mes_ini - relativedelta(months=1))
-mes_ant_fim = mes_completo_fim(ult_mes_ini - relativedelta(months=1))
+mes_ant_ini = mes_completo_ini(hoje - relativedelta(months=1))
+mes_ant_fim = mes_completo_fim(hoje - relativedelta(months=1))
 
 # Mesmo mês do ano passado
 mes_ly_ini = mes_completo_ini(ult_mes_ini - relativedelta(years=1))
@@ -159,7 +159,12 @@ elif atalho == "Último ano":
     periodo = (data_max - relativedelta(years=1), data_max)
 else:
     with col_f4:
-        periodo = st.date_input("Datas", value=(data_min_base, data_max), min_value=data_min_base, max_value=data_max)
+        periodo = st.date_input(
+            "Datas",
+            value=(data_max - relativedelta(months=6), data_max),
+            min_value=data_min_base,
+            max_value=date(2030, 12, 31)
+        )
 
 if atalho != "Personalizado":
     with col_f4:
