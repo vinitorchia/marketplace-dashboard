@@ -44,7 +44,11 @@ def card_modulo(titulo, descricao, url, icone, cor_class, key, disponivel=True):
     st.markdown(f"<div class='card-btn {cor_class}'>", unsafe_allow_html=True)
     if disponivel:
         if st.button(label, key=key, use_container_width=True):
-            st.markdown(f"<meta http-equiv='refresh' content='0; url={url}'>", unsafe_allow_html=True)
+            st.markdown(f"""
+            <script>
+                window.parent.location.href = '{url}';
+            </script>
+            """, unsafe_allow_html=True)
     else:
         st.button(label, key=key, use_container_width=True, disabled=True)
     st.markdown("</div>", unsafe_allow_html=True)
