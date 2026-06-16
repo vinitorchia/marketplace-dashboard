@@ -113,6 +113,10 @@ def aplicar_estilo():
     header[data-testid="stHeader"] { display: none !important; }
     .stSpinner { display: none !important; }
     [data-testid="stSidebar"] { display: block !important; visibility: visible !important; }
+    [data-testid="stBottomBlockContainer"] { display: none !important; }
+    ._profileContainer_1yi6l_53 { display: none !important; }
+    .viewerBadge_container__r5tak { display: none !important; }
+    #stDecoration { display: none !important; }
     button[title="View fullscreen"] { display: none !important; }
     button[title="Fullscreen"] { display: none !important; }
     [data-testid="stImage"] button { display: none !important; }
