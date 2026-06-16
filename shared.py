@@ -117,6 +117,16 @@ def aplicar_estilo():
     ._profileContainer_1yi6l_53 { display: none !important; }
     .viewerBadge_container__r5tak { display: none !important; }
     #stDecoration { display: none !important; }
+    [data-testid="stActionButtonIcon"] { display: none !important; }
+    .stDeployButton { display: none !important; }
+    [kind="deployButton"] { display: none !important; }
+    footer { display: none !important; }
+    footer:after { display: none !important; }
+    [data-testid="manage-app-button"] { display: none !important; }
+    div[class*="profileContainer"] { display: none !important; }
+    div[class*="viewerBadge"] { display: none !important; }
+    div[class*="styles_viewerBadge"] { display: none !important; }
+    div[class*="streamlitAppDeployButton"] { display: none !important; }
     button[title="View fullscreen"] { display: none !important; }
     button[title="Fullscreen"] { display: none !important; }
     [data-testid="stImage"] button { display: none !important; }
