@@ -112,6 +112,7 @@ def aplicar_estilo():
     #MainMenu { display: none !important; }
     header[data-testid="stHeader"] { display: none !important; }
     .stSpinner { display: none !important; }
+    [data-testid="stSidebar"] { display: block !important; visibility: visible !important; }
     button[title="View fullscreen"] { display: none !important; }
     button[title="Fullscreen"] { display: none !important; }
     [data-testid="stImage"] button { display: none !important; }

@@ -52,7 +52,7 @@ def fat_periodo(df, ini, fim, vc):
     mask = (df["data"].dt.date >= ini) & (df["data"].dt.date <= fim)
     return df[mask][vc].sum()
 
-st.set_page_config(page_title="Vendas por Marketplace", page_icon="📊", layout="wide")
+st.set_page_config(page_title="Vendas por Marketplace", page_icon="📊", layout="wide", initial_sidebar_state="expanded")
 
 init_idioma()
 aplicar_estilo()

@@ -1,7 +1,7 @@
 import streamlit as st
 from shared import init_idioma, t, aplicar_estilo, cabecalho
 
-st.set_page_config(page_title="Forecast", page_icon="📈", layout="wide")
+st.set_page_config(page_title="Forecast", page_icon="📈", layout="wide", initial_sidebar_state="expanded")
 
 init_idioma()
 aplicar_estilo()
