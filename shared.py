@@ -106,6 +106,12 @@ def aplicar_estilo():
     .kpi-mom   { background: rgba(59,130,246,0.10); color: #2563EB; border: 1px solid rgba(59,130,246,0.25); }
     .kpi-ytd   { background: rgba(16,185,129,0.10); color: #059669; border: 1px solid rgba(16,185,129,0.25); }
     [data-testid="StyledFullScreenButton"] { display: none !important; }
+    [data-testid="stToolbar"] { display: none !important; }
+    [data-testid="stDecoration"] { display: none !important; }
+    [data-testid="stStatusWidget"] { display: none !important; }
+    #MainMenu { display: none !important; }
+    header[data-testid="stHeader"] { display: none !important; }
+    .stSpinner { display: none !important; }
     button[title="View fullscreen"] { display: none !important; }
     button[title="Fullscreen"] { display: none !important; }
     [data-testid="stImage"] button { display: none !important; }
