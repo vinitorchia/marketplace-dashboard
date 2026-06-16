@@ -31,7 +31,6 @@ st.markdown("""
 .card-btn button:hover {
     transform: translateY(-3px) !important;
     box-shadow: 0 8px 24px rgba(15,23,42,0.10) !important;
-    border-color: #CBD5E1 !important;
 }
 .card-mkt button { border-top: 3px solid #7C3AED !important; }
 .card-fct button { border-top: 3px solid #3B82F6 !important; }
@@ -39,19 +38,13 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Controla navegação via session_state
-if "ir_para" in st.session_state and st.session_state["ir_para"]:
-    pagina = st.session_state["ir_para"]
-    st.session_state["ir_para"] = None
-    st.switch_page(pagina)
 
-def card_modulo(titulo, descricao, pagina, icone, cor_class, key, disponivel=True):
+def card_modulo(titulo, descricao, url, icone, cor_class, key, disponivel=True):
     label = f"{icone}\n\n**{titulo}**\n\n{descricao}"
     st.markdown(f"<div class='card-btn {cor_class}'>", unsafe_allow_html=True)
     if disponivel:
         if st.button(label, key=key, use_container_width=True):
-            st.session_state["ir_para"] = pagina
-            st.rerun()
+            st.markdown(f"<meta http-equiv='refresh' content='0; url={url}'>", unsafe_allow_html=True)
     else:
         st.button(label, key=key, use_container_width=True, disabled=True)
     st.markdown("</div>", unsafe_allow_html=True)
@@ -59,8 +52,8 @@ def card_modulo(titulo, descricao, pagina, icone, cor_class, key, disponivel=Tru
 
 col1, col2, col3 = st.columns(3)
 with col1:
-    card_modulo(t("card_marketplaces_titulo"), t("card_marketplaces_desc"), "pages/1_Marketplaces.py", "🛒", "card-mkt", "btn_mkt")
+    card_modulo(t("card_marketplaces_titulo"), t("card_marketplaces_desc"), "/Marketplaces", "🛒", "card-mkt", "btn_mkt")
 with col2:
-    card_modulo(t("card_forecast_titulo"), t("card_forecast_desc"), "pages/2_Forecast.py", "📈", "card-fct", "btn_fct")
+    card_modulo(t("card_forecast_titulo"), t("card_forecast_desc"), "/Forecast", "📈", "card-fct", "btn_fct")
 with col3:
-    card_modulo(t("card_cobertura_titulo"), t("card_cobertura_desc"), "pages/3_Cobertura.py", "📦", "card-cob", "btn_cob")
+    card_modulo(t("card_cobertura_titulo"), t("card_cobertura_desc"), "/Cobertura", "📦", "card-cob", "btn_cob")
