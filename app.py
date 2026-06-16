@@ -9,7 +9,6 @@ cabecalho(titulo_chave="titulo_home", subtitulo_chave="subtitulo_home")
 
 st.markdown("<div style='height:4px; background: linear-gradient(90deg,#7C3AED,#3B82F6,#10B981); border-radius:4px; margin: 8px 0 32px;'></div>", unsafe_allow_html=True)
 
-# CSS: card completo vira botão
 st.markdown("""
 <style>
 .card-btn button {
@@ -25,9 +24,9 @@ st.markdown("""
     font-family: Space Grotesk, sans-serif !important;
     font-size: 20px !important;
     font-weight: 800 !important;
-    transition: transform 0.15s ease, box-shadow 0.15s ease !important;
     white-space: pre-line !important;
     line-height: 1.6 !important;
+    transition: transform 0.15s ease, box-shadow 0.15s ease !important;
 }
 .card-btn button:hover {
     transform: translateY(-3px) !important;
@@ -40,13 +39,19 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+# Controla navegação via session_state
+if "ir_para" in st.session_state and st.session_state["ir_para"]:
+    pagina = st.session_state["ir_para"]
+    st.session_state["ir_para"] = None
+    st.switch_page(pagina)
 
 def card_modulo(titulo, descricao, pagina, icone, cor_class, key, disponivel=True):
     label = f"{icone}\n\n**{titulo}**\n\n{descricao}"
     st.markdown(f"<div class='card-btn {cor_class}'>", unsafe_allow_html=True)
     if disponivel:
         if st.button(label, key=key, use_container_width=True):
-            st.switch_page(pagina)
+            st.session_state["ir_para"] = pagina
+            st.rerun()
     else:
         st.button(label, key=key, use_container_width=True, disabled=True)
     st.markdown("</div>", unsafe_allow_html=True)
